@@ -1,15 +1,21 @@
-import "google/protobuf/any.proto";
 syntax = "proto3";
 package cache;
+import "google/protobuf/any.proto";
+
+
 
 service CacheController {
-  rpc GetCache (ServiceName, Symbol) returns (Cache);
-  rpc UpsertCache (ServiceName, Symbol, Cache) returns ();
-  rpc DeleteCache (ServiceName, Symbol) returns ();
+  rpc GetCache (ServiceName) returns (Cache);
+  rpc UpsertCache (ServiceName) returns (Null);
+  rpc DeleteCache (ServiceName) returns (Null);
+}
+
+message Null {
+    option string null = 1;
 }
 
 message ServiceName {
-    string service = 1;
+    string name = 1;
 }
 
 message Symbol {
