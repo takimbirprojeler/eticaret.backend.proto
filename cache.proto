@@ -1,28 +1,26 @@
 syntax = "proto3";
 package cache;
+import "google/protobuf/empty.proto";
 import "google/protobuf/any.proto";
-
-
-
-service CacheController {
-  rpc GetCache (ServiceName) returns (Cache);
-  rpc UpsertCache (ServiceName) returns (Null);
-  rpc DeleteCache (ServiceName) returns (Null);
+service CacheService {
+  rpc GetCache (ChaceToken) returns ( Cache) {};
+  rpc SetCache (ChaceToken) returns (google.protobuf.Empty) {};
+  rpc DelCache (ChaceToken) returns (google.protobuf.Empty) {};
+  rpc ResetCache (ChaceToken) returns (google.protobuf.Empty) {};
 }
 
-message Null {
-    option string null = 1;
+
+
+message ChaceToken {
+    string uid = 1;
+    Cache cache = 2;
 }
 
-message ServiceName {
-    string name = 1;
-}
-
-message Symbol {
-    string id = 1;
-    optional string ttl = 2;
-}
 
 message Cache {
-    google.protobuf.Any cache = 1;
+    oneof cache {
+        google.protobuf.Any data = 1;
+        google.protobuf.Empty null = 2;
+    }
+    
 }
