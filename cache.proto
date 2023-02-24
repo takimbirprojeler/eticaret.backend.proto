@@ -6,7 +6,7 @@ service CacheService {
   rpc GetCache (ChaceToken) returns ( Cache) {};
   rpc SetCache (ChaceToken) returns (google.protobuf.Empty) {};
   rpc DelCache (ChaceToken) returns (google.protobuf.Empty) {};
-  rpc ResetCache (ChaceToken) returns (google.protobuf.Empty) {};
+  rpc ResetCache (google.protobuf.Empty) returns (google.protobuf.Empty) {};
 }
 
 
