@@ -16,21 +16,21 @@ enum ProductEvents {
 enum SocketEvents {
     JoinRoomEvent = 1;
     LeaveRoomEvent = 2;
-    KickEvent = 3
+    KickEvent = 3;
 }
 
 enum RBACEvents {
-    RoleCreateEvent  = 6;
-    RoleUpdateEvent = 7;
-    RoleDeleteEvent = 8;
-    PermCreateEvent = 9;
-    UserPermUpdateEvent = 10;
-    UserRoleUpdateEvent = 11;
+    RoleCreateEvent  = 1;
+    RoleUpdateEvent = 2;
+    RoleDeleteEvent = 3;
+    PermCreateEvent = 4;
+    UserPermUpdateEvent = 5;
+    UserRoleUpdateEvent = 6;
 }
 
 enum AuthEvents {
-    UserLogoutEvent = 12;
-    UserLoginEvent = 13;
+    UserLogoutEvent = 1;
+    UserLoginEvent = 2;
 }
 enum Events {
    oneof EventType {
