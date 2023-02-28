@@ -1,0 +1,31 @@
+syntax = "proto3";
+package event;
+
+
+service EventService {
+  rpc TriggerEvent (TriggerEventInput) returns (Empty) {};
+  rpc BroadcastEvent (TriggerEventInput) returns (Empty) {};
+}
+
+
+enum Events {
+    ProductCreateEvent = 1;
+    ProductUpdateEvent = 2;
+    ProductDeleteEvent = 3;
+    JoinRoomEvent = 4;
+    LeaveRoomEvent = 5;
+}
+
+message Recipiant {
+    string room = 1;
+    string namespace = 2;
+    string recipiantId = 3;
+}
+
+message TriggerEventInput {
+    repeated Recipiant recipiants = 1;
+    Events event = 2;
+    repeated string data = 3;
+}
+
+message Empty { }
