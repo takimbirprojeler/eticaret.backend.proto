@@ -7,13 +7,38 @@ service EventService {
   rpc BroadcastEvent (TriggerEventInput) returns (Empty) {};
 }
 
-
-enum Events {
+enum ProductEvents {
     ProductCreateEvent = 1;
     ProductUpdateEvent = 2;
     ProductDeleteEvent = 3;
-    JoinRoomEvent = 4;
-    LeaveRoomEvent = 5;
+}
+
+enum SocketEvents {
+    JoinRoomEvent = 1;
+    LeaveRoomEvent = 2;
+    KickEvent = 3
+}
+
+enum RBACEvents {
+    RoleCreateEvent  = 6;
+    RoleUpdateEvent = 7;
+    RoleDeleteEvent = 8;
+    PermCreateEvent = 9;
+    UserPermUpdateEvent = 10;
+    UserRoleUpdateEvent = 11;
+}
+
+enum AuthEvents {
+    UserLogoutEvent = 12;
+    UserLoginEvent = 13;
+}
+enum Events {
+   oneof EventType {
+        ProductEvents productEvent = 1;
+        SocketEvents SocketEvent = 2;
+        RBACEvents rbacEvent = 3;
+        AuthEvents authEvent = 4;
+   }
 }
 
 message Recipiant {
